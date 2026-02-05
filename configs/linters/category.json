@@ -1,0 +1,5 @@
+{
+	"name": "linters",
+	"displayName": "Linters",
+	"description": "Static analysis tools for catching bugs, enforcing style, and improving code quality"
+}

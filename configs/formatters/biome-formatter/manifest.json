@@ -1,0 +1,29 @@
+{
+	"name": "biome-formatter",
+	"displayName": "Biome Formatter",
+	"version": "1.0.0",
+	"description": "Rust-based formatter — Prettier-compatible with tabs and trailing commas",
+	"category": "formatters",
+	"homepage": "https://biomejs.dev",
+	"schema": {
+		"url": "https://biomejs.dev/schemas/1.9.4/schema.json"
+	},
+	"aliases": ["biome-fmt"],
+	"tags": ["rust", "fast", "prettier-compatible", "typescript", "javascript"],
+	"files": [
+		{
+			"source": "biome.jsonc",
+			"strategy": "merge",
+			"destination": "biome.jsonc",
+			"description": "Biome formatter settings — merges into existing biome.jsonc"
+		}
+	],
+	"suggests": ["biome", "editorconfig"],
+	"requires": [],
+	"devDependencies": {
+		"@biomejs/biome": "latest"
+	},
+	"scripts": {
+		"format": "biome format --write ."
+	}
+}

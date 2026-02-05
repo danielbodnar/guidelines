@@ -1,0 +1,5 @@
+{
+	"name": "editors",
+	"displayName": "Editor Configs",
+	"description": "Editor-agnostic configuration for consistent coding styles"
+}

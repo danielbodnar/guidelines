@@ -1,0 +1,29 @@
+{
+	"name": "dprint",
+	"displayName": "dprint",
+	"version": "1.0.0",
+	"description": "Pluggable Rust-based code formatter with TypeScript, JSON, Markdown, and TOML support",
+	"category": "formatters",
+	"homepage": "https://dprint.dev",
+	"schema": {
+		"url": "https://dprint.dev/schemas/v0.json"
+	},
+	"aliases": [],
+	"tags": ["rust", "fast", "pluggable", "typescript", "markdown", "json", "toml"],
+	"files": [
+		{
+			"source": "dprint.json",
+			"strategy": "copy",
+			"description": "dprint config with TypeScript, JSON, Markdown, and TOML plugins"
+		}
+	],
+	"suggests": ["editorconfig"],
+	"requires": [],
+	"devDependencies": {
+		"dprint": "latest"
+	},
+	"scripts": {
+		"format": "dprint fmt",
+		"format:check": "dprint check"
+	}
+}

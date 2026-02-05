@@ -1,0 +1,24 @@
+{
+	"name": "editorconfig",
+	"displayName": "EditorConfig",
+	"version": "1.0.0",
+	"description": "Editor-agnostic coding style definitions for consistent formatting",
+	"category": "editors",
+	"homepage": "https://editorconfig.org",
+	"schema": {
+		"url": "https://json.schemastore.org/editorconfig.json"
+	},
+	"aliases": ["ec"],
+	"tags": ["editor", "formatting", "cross-editor", "universal"],
+	"files": [
+		{
+			"source": ".editorconfig",
+			"strategy": "copy",
+			"description": "EditorConfig with tab-based TS/JS, space-based YAML/TOML"
+		}
+	],
+	"suggests": ["biome-formatter", "dprint"],
+	"requires": [],
+	"devDependencies": {},
+	"scripts": {}
+}

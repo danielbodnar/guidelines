@@ -1,0 +1,29 @@
+{
+	"name": "tsconfig",
+	"displayName": "TypeScript Config",
+	"version": "1.0.0",
+	"description": "Strict TypeScript configuration optimized for Bun with ESNext target",
+	"category": "typescript",
+	"homepage": "https://www.typescriptlang.org/tsconfig",
+	"schema": {
+		"url": "https://json.schemastore.org/tsconfig.json"
+	},
+	"aliases": ["ts", "typescript"],
+	"tags": ["typescript", "bun", "strict", "esnext"],
+	"files": [
+		{
+			"source": "tsconfig.json",
+			"strategy": "copy",
+			"description": "Strict TSConfig for Bun + ESNext with bundler resolution"
+		}
+	],
+	"suggests": ["oxlint", "biome-formatter"],
+	"requires": [],
+	"devDependencies": {
+		"@types/bun": "latest",
+		"typescript": "latest"
+	},
+	"scripts": {
+		"check": "tsc --noEmit"
+	}
+}

@@ -1,0 +1,5 @@
+{
+	"name": "git-hooks",
+	"displayName": "Git Hooks",
+	"description": "Pre-commit, pre-push, and other git hook managers for automated quality checks"
+}

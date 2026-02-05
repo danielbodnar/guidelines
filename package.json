@@ -1,0 +1,51 @@
+{
+  "name": "@danielbodnar/guidelines",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Centralized config files, templates, and guidelines for linters, formatters, editors, CI/CD, and more",
+  "author": "Daniel Bodnar <daniel.bodnar@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danielbodnar/guidelines"
+  },
+  "bin": {
+    "guidelines": "src/cli.ts"
+  },
+  "files": [
+    "src/**/*.ts",
+    "configs/**/*"
+  ],
+  "keywords": [
+    "config",
+    "guidelines",
+    "linter",
+    "formatter",
+    "templates",
+    "scaffolding",
+    "cli",
+    "oxlint",
+    "biome",
+    "prettier",
+    "dprint",
+    "eslint",
+    "lefthook",
+    "commitlint"
+  ],
+  "dependencies": {
+    "citty": "latest",
+    "zod": "latest",
+    "@clack/prompts": "latest"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "latest",
+    "oxlint": "latest"
+  },
+  "scripts": {
+    "dev": "bun run src/cli.ts",
+    "lint": "oxlint .",
+    "test": "bun test",
+    "check": "tsc --noEmit"
+  }
+}

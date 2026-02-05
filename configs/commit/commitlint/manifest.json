@@ -1,0 +1,27 @@
+{
+	"name": "commitlint",
+	"displayName": "commitlint",
+	"version": "1.0.0",
+	"description": "Lint commit messages against conventional commit standards",
+	"category": "commit",
+	"homepage": "https://commitlint.js.org",
+	"schema": {
+		"url": "https://json.schemastore.org/commitlintrc.json"
+	},
+	"aliases": ["commit-lint"],
+	"tags": ["git", "commit", "conventional-commits", "lint"],
+	"files": [
+		{
+			"source": "commitlint.config.ts",
+			"strategy": "copy",
+			"description": "commitlint config enforcing conventional commit format"
+		}
+	],
+	"suggests": ["lefthook"],
+	"requires": [],
+	"devDependencies": {
+		"@commitlint/cli": "latest",
+		"@commitlint/config-conventional": "latest"
+	},
+	"scripts": {}
+}

@@ -1,0 +1,29 @@
+{
+	"name": "oxlint",
+	"displayName": "oxlint",
+	"version": "1.0.0",
+	"description": "Rust-based linter — fast, zero-config alternative to ESLint",
+	"category": "linters",
+	"homepage": "https://oxc.rs/docs/guide/usage/linter",
+	"schema": {
+		"vendorUrl": "https://unpkg.com/oxlint@latest/configuration_schema.json",
+		"nodeModulesPath": "oxlint/configuration_schema.json"
+	},
+	"aliases": ["oxc"],
+	"tags": ["rust", "fast", "eslint-alternative", "typescript", "javascript"],
+	"files": [
+		{
+			"source": ".oxlintrc.json",
+			"strategy": "copy",
+			"description": "oxlint configuration with recommended rules"
+		}
+	],
+	"suggests": ["biome-formatter", "lefthook"],
+	"requires": [],
+	"devDependencies": {
+		"oxlint": "latest"
+	},
+	"scripts": {
+		"lint": "oxlint ."
+	}
+}

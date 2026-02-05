@@ -1,0 +1,29 @@
+node_modules/
+dist/
+.cache/
+coverage/
+*.tsbuildinfo
+bun.lockb
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build artifacts
+*.tgz
+
+# Session files
+session*.txt
+
+# Temporary
+tmp/

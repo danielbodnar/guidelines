@@ -1,0 +1,28 @@
+{
+	"name": "biome",
+	"displayName": "Biome Linter",
+	"version": "1.0.0",
+	"description": "All-in-one Rust-based linter with TypeScript-first rules and auto-fix",
+	"category": "linters",
+	"homepage": "https://biomejs.dev",
+	"schema": {
+		"url": "https://biomejs.dev/schemas/1.9.4/schema.json"
+	},
+	"aliases": ["biomejs"],
+	"tags": ["rust", "fast", "typescript", "javascript", "all-in-one"],
+	"files": [
+		{
+			"source": "biome.jsonc",
+			"strategy": "copy",
+			"description": "Biome config with linter rules enabled, formatter deferred to biome-formatter"
+		}
+	],
+	"suggests": ["biome-formatter", "lefthook"],
+	"requires": [],
+	"devDependencies": {
+		"@biomejs/biome": "latest"
+	},
+	"scripts": {
+		"lint": "biome lint --write ."
+	}
+}

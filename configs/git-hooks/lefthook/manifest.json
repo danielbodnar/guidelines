@@ -1,0 +1,28 @@
+{
+	"name": "lefthook",
+	"displayName": "Lefthook",
+	"version": "1.0.0",
+	"description": "Fast, zero-dependency git hooks manager written in Go",
+	"category": "git-hooks",
+	"homepage": "https://github.com/evilmartians/lefthook",
+	"schema": {
+		"url": "https://json.schemastore.org/lefthook.json"
+	},
+	"aliases": ["hooks"],
+	"tags": ["git", "hooks", "pre-commit", "fast", "go"],
+	"files": [
+		{
+			"source": "lefthook.yml",
+			"strategy": "copy",
+			"description": "Lefthook config with pre-commit lint and format hooks"
+		}
+	],
+	"suggests": ["oxlint", "biome-formatter", "commitlint"],
+	"requires": [],
+	"devDependencies": {
+		"lefthook": "latest"
+	},
+	"scripts": {
+		"prepare": "lefthook install"
+	}
+}
