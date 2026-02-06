@@ -45,6 +45,9 @@ export const initCommand = defineCommand({
 		},
 	},
 	async run({ args, rawArgs }) {
+		if (args.remote) {
+			console.log(dim("Fetching configs from GitHub..."));
+		}
 		const configsDir = await resolveConfigsDir(args.remote);
 		const registry = await loadRegistry(configsDir);
 		const options: InitOptions = {
