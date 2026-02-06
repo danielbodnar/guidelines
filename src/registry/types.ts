@@ -37,6 +37,7 @@ export const ManifestSchema = z.object({
 	files: z.array(FileEntrySchema).min(1),
 	suggests: z.array(z.string()).default([]),
 	requires: z.array(z.string()).default([]),
+	dependencies: z.record(z.string(), z.string()).default({}),
 	devDependencies: z.record(z.string(), z.string()).default({}),
 	scripts: z.record(z.string(), z.string()).default({}),
 	variables: z

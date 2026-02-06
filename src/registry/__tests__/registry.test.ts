@@ -59,4 +59,12 @@ describe("loadRegistry", () => {
 			expect(registry.categories.has(manifest.category)).toBe(true);
 		}
 	});
+
+	test("parses dependencies field from manifest", async () => {
+		const registry = await loadRegistry();
+		const hono = registry.tools.get("hono");
+		expect(hono).toBeDefined();
+		expect(hono!.dependencies).toEqual({ hono: "latest" });
+		expect(hono!.devDependencies).toEqual({ "@types/bun": "latest" });
+	});
 });
