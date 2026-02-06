@@ -17,6 +17,9 @@
 	],
 	"suggests": ["tsconfig", "wrangler", "bunfig"],
 	"requires": [],
+	"dependencies": {
+		"hono": "latest"
+	},
 	"devDependencies": {
 		"@types/bun": "latest"
 	},
