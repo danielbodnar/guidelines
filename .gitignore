@@ -21,6 +21,7 @@ Thumbs.db
 
 # Build artifacts
 *.tgz
+.dist/
 
 # Session files
 session*.txt

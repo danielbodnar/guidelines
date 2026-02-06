@@ -2,6 +2,7 @@ import { defineCommand } from "citty";
 import { loadRegistry, type Registry } from "../registry/index.ts";
 import { resolveTool } from "../registry/resolve.ts";
 import { processManifestFiles, type InitOptions } from "../operations/copy.ts";
+import { fetchRemoteConfigs } from "../registry/remote.ts";
 import { bold, cyan, dim, green, yellow, red } from "../utils/format.ts";
 import type { Manifest } from "../registry/types.ts";
 import * as p from "@clack/prompts";
@@ -37,9 +38,21 @@ export const initCommand = defineCommand({
 			alias: "n",
 			description: "Show what would be copied without writing files",
 		},
+		remote: {
+			type: "boolean",
+			alias: "r",
+			description: "Fetch configs from GitHub instead of local package",
+		},
 	},
 	async run({ args, rawArgs }) {
-		const registry = await loadRegistry();
+		let configsDir: string | undefined;
+
+		if (args.remote) {
+			console.log(`${dim("Fetching configs from GitHub...")}`);
+			configsDir = await fetchRemoteConfigs();
+		}
+
+		const registry = await loadRegistry(configsDir);
 		const options: InitOptions = {
 			force: Boolean(args.force),
 			dryRun: Boolean(args["dry-run"]),

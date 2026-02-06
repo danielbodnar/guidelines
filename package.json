@@ -12,6 +12,10 @@
   "bin": {
     "guidelines": "src/cli.ts"
   },
+  "exports": {
+    ".": "./src/cli.ts",
+    "./configs/*": "./configs/*"
+  },
   "files": [
     "src/**/*.ts",
     "configs/**/*"
@@ -34,6 +38,7 @@
   ],
   "dependencies": {
     "citty": "latest",
+    "giget": "latest",
     "zod": "latest",
     "@clack/prompts": "latest"
   },
@@ -44,6 +49,7 @@
   },
   "scripts": {
     "dev": "bun run src/cli.ts",
+    "build": "bun build --compile --target=bun --outfile .dist/guidelines src/cli.ts",
     "lint": "oxlint .",
     "test": "bun test",
     "check": "tsc --noEmit"

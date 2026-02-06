@@ -14,9 +14,10 @@ export type Registry = {
 export const getConfigsDir = (): string =>
 	resolve(import.meta.dir, "../../configs");
 
-/** Load the entire registry by scanning configs/ */
-export const loadRegistry = async (): Promise<Registry> => {
-	const configsDir = getConfigsDir();
+/** Load the entire registry by scanning a configs directory */
+export const loadRegistry = async (
+	configsDir = getConfigsDir(),
+): Promise<Registry> => {
 	const categories = new Map<string, Category>();
 	const tools = new Map<string, Manifest>();
 	const aliases = new Map<string, string>();
