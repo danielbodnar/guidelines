@@ -1,0 +1,34 @@
+{
+	"name": "rust",
+	"displayName": "Rust",
+	"version": "1.0.0",
+	"description": "Rust formatting and linting with rustfmt and clippy",
+	"category": "languages",
+	"homepage": "https://www.rust-lang.org",
+	"schema": {
+		"vendorUrl": "https://doc.rust-lang.org/nightly/style-guide/"
+	},
+	"aliases": ["rs", "rustfmt", "clippy"],
+	"tags": ["rust", "formatting", "linting", "systems"],
+	"files": [
+		{
+			"source": "rustfmt.toml",
+			"strategy": "copy",
+			"description": "Rust formatter config — tabs, 100 char width, 2024 edition"
+		},
+		{
+			"source": "clippy.toml",
+			"strategy": "copy",
+			"description": "Clippy linter config with opinionated lint levels"
+		},
+		{
+			"source": "rust-toolchain.toml",
+			"strategy": "copy",
+			"description": "Rust toolchain pinning with clippy and rustfmt components"
+		}
+	],
+	"suggests": ["editorconfig"],
+	"requires": [],
+	"devDependencies": {},
+	"scripts": {}
+}

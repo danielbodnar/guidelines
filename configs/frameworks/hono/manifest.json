@@ -1,0 +1,30 @@
+{
+	"name": "hono",
+	"displayName": "Hono",
+	"version": "1.0.0",
+	"description": "Hono web framework config for Bun or Cloudflare Workers",
+	"category": "frameworks",
+	"homepage": "https://hono.dev",
+	"aliases": ["honojs"],
+	"tags": ["backend", "api", "web-framework", "edge", "bun", "cloudflare"],
+	"files": [
+		{
+			"source": "app.ts",
+			"destination": "src/index.ts",
+			"strategy": "copy",
+			"description": "Hono app entry point with health check route"
+		}
+	],
+	"suggests": ["tsconfig", "wrangler", "bunfig"],
+	"requires": [],
+	"dependencies": {
+		"hono": "latest"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"scripts": {
+		"dev": "bun run --hot src/index.ts",
+		"start": "bun run src/index.ts"
+	}
+}

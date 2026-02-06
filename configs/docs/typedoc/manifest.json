@@ -1,0 +1,28 @@
+{
+	"name": "typedoc",
+	"displayName": "TypeDoc",
+	"version": "1.0.0",
+	"description": "TypeScript API documentation generator",
+	"category": "docs",
+	"homepage": "https://typedoc.org",
+	"schema": {
+		"url": "https://json.schemastore.org/typedoc.json"
+	},
+	"aliases": ["tsdoc", "api-docs"],
+	"tags": ["documentation", "typescript", "api", "jsdoc"],
+	"files": [
+		{
+			"source": "typedoc.json",
+			"strategy": "copy",
+			"description": "TypeDoc config for generating API docs from TypeScript"
+		}
+	],
+	"suggests": ["tsconfig"],
+	"requires": ["tsconfig"],
+	"devDependencies": {
+		"typedoc": "latest"
+	},
+	"scripts": {
+		"docs": "typedoc"
+	}
+}

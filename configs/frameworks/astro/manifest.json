@@ -1,0 +1,35 @@
+{
+	"name": "astro",
+	"displayName": "Astro",
+	"version": "1.0.0",
+	"description": "Astro static site config with TypeScript strict mode",
+	"category": "frameworks",
+	"homepage": "https://astro.build",
+	"schema": {
+		"url": "https://json.schemastore.org/tsconfig.json"
+	},
+	"aliases": ["astrojs"],
+	"tags": ["frontend", "static-site", "ssg", "astro", "typescript"],
+	"files": [
+		{
+			"source": "astro.config.ts",
+			"strategy": "copy",
+			"description": "Astro config with TypeScript and sensible defaults"
+		},
+		{
+			"source": "tsconfig.json",
+			"strategy": "copy",
+			"description": "Astro-specific TypeScript config extending astro/tsconfigs/strict"
+		}
+	],
+	"suggests": ["editorconfig", "biome-formatter"],
+	"requires": [],
+	"devDependencies": {
+		"astro": "latest"
+	},
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview"
+	}
+}

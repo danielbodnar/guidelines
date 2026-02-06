@@ -117,6 +117,31 @@ bunx guidelines info oxlint --remote
 | `mise` | Polyglot tool version manager |
 | `bunfig` | Bun runtime and test runner configuration |
 
+### Claude Code
+
+| Tool | Description |
+|------|-------------|
+| `claude-code` | Project-level CLAUDE.md and settings template |
+
+### Languages
+
+| Tool | Description |
+|------|-------------|
+| `rust` | Rust formatting, linting, and toolchain config (rustfmt, clippy) |
+
+### Frameworks
+
+| Tool | Description |
+|------|-------------|
+| `astro` | Astro static site config with TypeScript strict mode |
+| `hono` | Hono web framework entry point for Bun |
+
+### Documentation
+
+| Tool | Description |
+|------|-------------|
+| `typedoc` | TypeScript API documentation generator |
+
 ## File Strategies
 
 Each config file declares how it integrates into your project:

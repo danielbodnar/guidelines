@@ -1,0 +1,27 @@
+{
+	"name": "claude-code",
+	"displayName": "Claude Code",
+	"version": "1.0.0",
+	"description": "Project-level Claude Code configuration with CLAUDE.md and settings",
+	"category": "claude",
+	"homepage": "https://docs.anthropic.com/en/docs/agents-and-tools/claude-code",
+	"aliases": ["claude", "cc"],
+	"tags": ["ai", "claude", "llm", "agent", "assistant"],
+	"files": [
+		{
+			"source": "CLAUDE.md",
+			"strategy": "copy",
+			"description": "Project-level instructions and conventions for Claude Code"
+		},
+		{
+			"source": "settings.json",
+			"destination": ".claude/settings.json",
+			"strategy": "copy",
+			"description": "Claude Code project settings with safe defaults"
+		}
+	],
+	"suggests": ["editorconfig", "tsconfig"],
+	"requires": [],
+	"devDependencies": {},
+	"scripts": {}
+}
