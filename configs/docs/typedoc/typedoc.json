@@ -1,0 +1,12 @@
+{
+	"$schema": "https://json.schemastore.org/typedoc.json",
+	"entryPoints": ["src/index.ts"],
+	"out": "docs",
+	"name": "API Documentation",
+	"includeVersion": true,
+	"excludePrivate": true,
+	"excludeInternal": true,
+	"cleanOutputDir": true,
+	"navigationLinks": {},
+	"categorizeByGroup": true
+}

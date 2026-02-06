@@ -1,0 +1,14 @@
+{
+	"permissions": {
+		"allow": [
+			"Bash(bun test*)",
+			"Bash(bun run check*)",
+			"Bash(bun run lint*)",
+			"Bash(bun run build*)"
+		],
+		"deny": [
+			"Bash(rm -rf *)",
+			"Bash(git push --force*)"
+		]
+	}
+}
