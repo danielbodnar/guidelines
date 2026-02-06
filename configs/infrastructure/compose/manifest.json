@@ -1,0 +1,24 @@
+{
+	"name": "compose",
+	"displayName": "Docker Compose",
+	"version": "1.0.0",
+	"description": "Docker Compose template for multi-service development environments",
+	"category": "infrastructure",
+	"homepage": "https://docs.docker.com/compose/",
+	"schema": {
+		"url": "https://raw.githubusercontent.com/compose-spec/compose-go/master/schema/compose-spec.json"
+	},
+	"aliases": ["docker-compose"],
+	"tags": ["docker", "containers", "orchestration", "development"],
+	"files": [
+		{
+			"source": "compose.yml",
+			"strategy": "copy",
+			"description": "Docker Compose config with app service and optional PostgreSQL"
+		}
+	],
+	"suggests": ["devcontainer"],
+	"requires": [],
+	"devDependencies": {},
+	"scripts": {}
+}

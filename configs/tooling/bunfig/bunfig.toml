@@ -1,0 +1,14 @@
+[install]
+# Use hardlinks for faster installs
+backend = "hardlink"
+
+[install.lockfile]
+# Print a yarn v1-style bun.lock instead of binary bun.lockb
+print = "yarn"
+
+[test]
+coverage = true
+coverageReporter = ["text", "lcov"]
+
+[telemetry]
+enabled = false

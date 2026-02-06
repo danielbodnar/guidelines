@@ -1,0 +1,25 @@
+{
+	"name": "dependabot",
+	"displayName": "Dependabot",
+	"version": "1.0.0",
+	"description": "Automated dependency updates via GitHub Dependabot",
+	"category": "github",
+	"homepage": "https://docs.github.com/en/code-security/dependabot",
+	"schema": {
+		"url": "https://json.schemastore.org/dependabot-2.0.json"
+	},
+	"aliases": [],
+	"tags": ["dependencies", "security", "github", "automation"],
+	"files": [
+		{
+			"source": "dependabot.yml",
+			"destination": ".github/dependabot.yml",
+			"strategy": "copy",
+			"description": "Dependabot config for npm and GitHub Actions ecosystems"
+		}
+	],
+	"suggests": ["renovate"],
+	"requires": [],
+	"devDependencies": {},
+	"scripts": {}
+}

@@ -1,0 +1,27 @@
+{
+	"$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json",
+	"name": "Bun Development",
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {},
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/shyim/devcontainers-features/bun:0": {},
+		"ghcr.io/rocker-org/devcontainer-features/mise:0": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"biomejs.biome",
+				"oxc.oxc-vscode",
+				"EditorConfig.EditorConfig",
+				"evilmartians.lefthook"
+			],
+			"settings": {
+				"editor.formatOnSave": true,
+				"editor.defaultFormatter": "biomejs.biome"
+			}
+		}
+	},
+	"postCreateCommand": "bun install",
+	"remoteUser": "vscode"
+}

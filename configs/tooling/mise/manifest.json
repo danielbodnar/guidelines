@@ -1,0 +1,24 @@
+{
+	"name": "mise",
+	"displayName": "mise",
+	"version": "1.0.0",
+	"description": "Polyglot dev tool version manager — replacement for asdf, nvm, pyenv, etc.",
+	"category": "tooling",
+	"homepage": "https://mise.jdx.dev",
+	"schema": {
+		"url": "https://mise.jdx.dev/schema/mise.json"
+	},
+	"aliases": ["mise-en-place"],
+	"tags": ["version-manager", "polyglot", "tools", "asdf-compatible"],
+	"files": [
+		{
+			"source": "mise.toml",
+			"strategy": "copy",
+			"description": "mise config with Bun and Node tool versions"
+		}
+	],
+	"suggests": [],
+	"requires": [],
+	"devDependencies": {},
+	"scripts": {}
+}

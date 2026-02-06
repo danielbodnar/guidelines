@@ -1,0 +1,36 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": [
+		"config:recommended",
+		":semanticCommits",
+		":semanticCommitTypeAll(chore)",
+		"group:monorepos",
+		"group:recommended",
+		"replacements:all",
+		"workarounds:all"
+	],
+	"labels": ["dependencies"],
+	"rangeStrategy": "bump",
+	"automerge": true,
+	"automergeType": "pr",
+	"platformAutomerge": true,
+	"packageRules": [
+		{
+			"matchUpdateTypes": ["minor", "patch"],
+			"matchCurrentVersion": "!/^0/",
+			"automerge": true
+		},
+		{
+			"matchDepTypes": ["devDependencies"],
+			"matchUpdateTypes": ["minor", "patch"],
+			"automerge": true,
+			"groupName": "dev dependencies (non-major)"
+		},
+		{
+			"matchUpdateTypes": ["major"],
+			"automerge": false,
+			"labels": ["dependencies", "breaking"]
+		}
+	],
+	"schedule": ["before 7am on Monday"]
+}

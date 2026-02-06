@@ -1,0 +1,24 @@
+{
+	"name": "bunfig",
+	"displayName": "Bun Config",
+	"version": "1.0.0",
+	"description": "Bun runtime configuration for install behavior, test runner, and telemetry",
+	"category": "tooling",
+	"homepage": "https://bun.sh/docs/runtime/bunfig",
+	"schema": {
+		"url": "https://json.schemastore.org/bunfig.json"
+	},
+	"aliases": ["bun-config"],
+	"tags": ["bun", "runtime", "config", "package-manager"],
+	"files": [
+		{
+			"source": "bunfig.toml",
+			"strategy": "copy",
+			"description": "Bun config with frozen lockfile in CI, test coverage, and telemetry off"
+		}
+	],
+	"suggests": ["mise"],
+	"requires": [],
+	"devDependencies": {},
+	"scripts": {}
+}

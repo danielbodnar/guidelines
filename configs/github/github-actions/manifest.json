@@ -1,0 +1,25 @@
+{
+	"name": "github-actions",
+	"displayName": "GitHub Actions CI",
+	"version": "1.0.0",
+	"description": "CI workflow for Bun projects with lint, typecheck, and test steps",
+	"category": "github",
+	"homepage": "https://docs.github.com/en/actions",
+	"schema": {
+		"url": "https://json.schemastore.org/github-workflow.json"
+	},
+	"aliases": ["actions", "ci"],
+	"tags": ["ci", "github", "automation", "bun"],
+	"files": [
+		{
+			"source": "ci.yml",
+			"destination": ".github/workflows/ci.yml",
+			"strategy": "copy",
+			"description": "CI workflow with lint, typecheck, and test jobs"
+		}
+	],
+	"suggests": ["oxlint", "lefthook"],
+	"requires": [],
+	"devDependencies": {},
+	"scripts": {}
+}

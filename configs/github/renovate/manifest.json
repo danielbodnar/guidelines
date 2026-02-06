@@ -1,0 +1,24 @@
+{
+	"name": "renovate",
+	"displayName": "Renovate",
+	"version": "1.0.0",
+	"description": "Automated dependency updates with Renovate — more flexible than Dependabot",
+	"category": "github",
+	"homepage": "https://docs.renovatebot.com",
+	"schema": {
+		"url": "https://docs.renovatebot.com/renovate-schema.json"
+	},
+	"aliases": ["reno"],
+	"tags": ["dependencies", "security", "automation", "self-hosted"],
+	"files": [
+		{
+			"source": "renovate.json",
+			"strategy": "copy",
+			"description": "Renovate config with automerge for minor/patch, grouped updates"
+		}
+	],
+	"suggests": [],
+	"requires": [],
+	"devDependencies": {},
+	"scripts": {}
+}

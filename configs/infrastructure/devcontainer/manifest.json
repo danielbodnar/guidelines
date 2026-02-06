@@ -1,0 +1,25 @@
+{
+	"name": "devcontainer",
+	"displayName": "Dev Container",
+	"version": "1.0.0",
+	"description": "Development container config for consistent environments with Bun and common tools",
+	"category": "infrastructure",
+	"homepage": "https://containers.dev",
+	"schema": {
+		"url": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json"
+	},
+	"aliases": ["devcontainers", "dc"],
+	"tags": ["containers", "docker", "codespaces", "dev-environment"],
+	"files": [
+		{
+			"source": "devcontainer.json",
+			"destination": ".devcontainer/devcontainer.json",
+			"strategy": "copy",
+			"description": "Dev container config with Bun, mise, and common extensions"
+		}
+	],
+	"suggests": ["editorconfig"],
+	"requires": [],
+	"devDependencies": {},
+	"scripts": {}
+}

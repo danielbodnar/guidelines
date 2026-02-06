@@ -1,0 +1,8 @@
+#:schema https://mise.jdx.dev/schema/mise.json
+
+[tools]
+bun = "latest"
+node = "lts"
+
+[settings]
+experimental = false

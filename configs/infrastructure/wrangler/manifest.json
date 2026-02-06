@@ -1,0 +1,30 @@
+{
+	"name": "wrangler",
+	"displayName": "Cloudflare Wrangler",
+	"version": "1.0.0",
+	"description": "Cloudflare Workers config with observability, logs, traces, and preview URLs",
+	"category": "infrastructure",
+	"homepage": "https://developers.cloudflare.com/workers/wrangler/configuration/",
+	"schema": {
+		"url": "https://www.unpkg.com/wrangler/config-schema.json",
+		"nodeModulesPath": "wrangler/config-schema.json"
+	},
+	"aliases": ["cf-worker", "cloudflare"],
+	"tags": ["cloudflare", "workers", "edge", "serverless"],
+	"files": [
+		{
+			"source": "wrangler.jsonc",
+			"strategy": "copy",
+			"description": "Wrangler config with full observability, logs, traces, and preview URLs"
+		}
+	],
+	"suggests": [],
+	"requires": [],
+	"devDependencies": {
+		"wrangler": "latest"
+	},
+	"scripts": {
+		"dev": "wrangler dev",
+		"deploy": "wrangler deploy"
+	}
+}
