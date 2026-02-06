@@ -129,6 +129,19 @@ describe("templateFile", () => {
 		expect(await Bun.file(dest).text()).toBe("existing");
 	});
 
+	test("overwrites existing file with --force", async () => {
+		const src = join(tempDir, "template.txt");
+		const dest = join(tempDir, "output.txt");
+		await Bun.write(src, "Hello {{NAME}}!");
+		await Bun.write(dest, "existing content");
+
+		const options: InitOptions = { force: true, dryRun: false };
+		const result = await templateFile(src, dest, { NAME: "World" }, options);
+
+		expect(result.action).toBe("overwritten");
+		expect(await Bun.file(dest).text()).toBe("Hello World!");
+	});
+
 	test("dry-run does not write file", async () => {
 		const src = join(tempDir, "template.txt");
 		const dest = join(tempDir, "output.txt");
