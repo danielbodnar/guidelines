@@ -7,6 +7,7 @@ import { green, yellow, dim } from "../utils/format.ts";
 export type InitOptions = {
 	force: boolean;
 	dryRun: boolean;
+	variables?: Record<string, string>;
 };
 
 export type CopyResult = {
@@ -44,6 +45,53 @@ export const copyFile = async (
 	return { action, path: destPath };
 };
 
+/** Substitute {{KEY}} placeholders in a template file */
+export const templateFile = async (
+	sourcePath: string,
+	destPath: string,
+	variables: Record<string, string>,
+	options: InitOptions,
+): Promise<CopyResult> => {
+	const exists = await Bun.file(destPath).exists();
+
+	if (options.dryRun) {
+		const action = exists ? "overwritten" : "created";
+		console.log(
+			`  ${dim("[dry-run]")} ${action === "created" ? green("create") : yellow("overwrite")} ${destPath}`,
+		);
+		return { action, path: destPath };
+	}
+
+	if (exists && !options.force) {
+		console.log(`  ${yellow("skip")} ${destPath} ${dim("(already exists, use --force to overwrite)")}`);
+		return { action: "skipped", path: destPath };
+	}
+
+	let content = await Bun.file(sourcePath).text();
+	for (const [key, value] of Object.entries(variables)) {
+		content = content.replaceAll(`{{${key}}}`, value);
+	}
+
+	ensureParentDir(destPath);
+	await Bun.write(destPath, content);
+
+	const action = exists ? "overwritten" : "created";
+	console.log(`  ${green(action === "created" ? "create" : "overwrite")} ${destPath}`);
+	return { action, path: destPath };
+};
+
+/** Resolve template variables: options.variables override manifest defaults */
+const resolveVariables = (
+	manifest: Manifest,
+	options: InitOptions,
+): Record<string, string> => {
+	const resolved: Record<string, string> = {};
+	for (const [key, def] of Object.entries(manifest.variables)) {
+		resolved[key] = options.variables?.[key] ?? def.default ?? `{{${key}}}`;
+	}
+	return resolved;
+};
+
 /** Process all files from a manifest */
 export const processManifestFiles = async (
 	manifest: Manifest,
@@ -51,6 +99,7 @@ export const processManifestFiles = async (
 ): Promise<CopyResult[]> => {
 	const toolPath = resolveToolPath(manifest);
 	const results: CopyResult[] = [];
+	const templateVars = resolveVariables(manifest, options);
 
 	for (const file of manifest.files) {
 		if (file.strategy === "reference") continue;
@@ -59,9 +108,13 @@ export const processManifestFiles = async (
 		const destPath = resolveDestination(file.destination ?? file.source);
 
 		switch (file.strategy) {
-			case "copy":
-			case "template": {
+			case "copy": {
 				const result = await copyFile(sourcePath, destPath, options);
+				results.push(result);
+				break;
+			}
+			case "template": {
+				const result = await templateFile(sourcePath, destPath, templateVars, options);
 				results.push(result);
 				break;
 			}
