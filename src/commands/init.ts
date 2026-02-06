@@ -50,6 +50,7 @@ export const initCommand = defineCommand({
 		}
 		const configsDir = await resolveConfigsDir(args.remote);
 		const registry = await loadRegistry(configsDir);
+		const interactive = Boolean(args.interactive);
 		const options: InitOptions = {
 			force: Boolean(args.force),
 			dryRun: Boolean(args["dry-run"]),
@@ -94,16 +95,37 @@ export const initCommand = defineCommand({
 				console.error(`${red("Error:")} Unknown tool: ${name}`);
 				continue;
 			}
-			await initTool(registry, manifest, options);
+			await initTool(registry, manifest, options, interactive);
 		}
 	},
 });
+
+/** Prompt for template variables using @clack/prompts */
+const promptVariables = async (
+	manifest: Manifest,
+): Promise<Record<string, string>> => {
+	const resolved: Record<string, string> = {};
+	for (const [key, def] of Object.entries(manifest.variables)) {
+		const value = await p.text({
+			message: def.description,
+			placeholder: def.default ?? key,
+			defaultValue: def.default,
+		});
+		if (p.isCancel(value)) {
+			p.cancel("Cancelled");
+			process.exit(0);
+		}
+		resolved[key] = value;
+	}
+	return resolved;
+};
 
 /** Initialize a single tool */
 const initTool = async (
 	registry: Registry,
 	manifest: Manifest,
 	options: InitOptions,
+	interactive: boolean,
 ): Promise<void> => {
 	console.log(`\n${bold(cyan(manifest.displayName))} ${dim(`v${manifest.version}`)}`);
 
@@ -113,6 +135,12 @@ const initTool = async (
 		if (reqManifest) {
 			console.log(`  ${yellow("requires")} ${req} ${dim("(ensure it is also initialized)")}`);
 		}
+	}
+
+	// Resolve template variables
+	const hasVariables = Object.keys(manifest.variables).length > 0;
+	if (hasVariables && interactive) {
+		options = { ...options, variables: await promptVariables(manifest) };
 	}
 
 	// Process files
