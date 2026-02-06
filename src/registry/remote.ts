@@ -19,3 +19,14 @@ export const fetchRemoteConfigs = async (options?: {
 
 	return result.dir;
 };
+
+/**
+ * Resolve the configs directory — fetches from GitHub when remote is true,
+ * returns undefined (use local default) otherwise.
+ */
+export const resolveConfigsDir = async (
+	remote?: boolean,
+): Promise<string | undefined> => {
+	if (!remote) return undefined;
+	return fetchRemoteConfigs();
+};

@@ -1,5 +1,6 @@
 import { defineCommand } from "citty";
 import { loadRegistry } from "../registry/index.ts";
+import { resolveConfigsDir } from "../registry/remote.ts";
 import { bold, cyan, dim, header, bullet } from "../utils/format.ts";
 
 export const listCommand = defineCommand({
@@ -13,9 +14,15 @@ export const listCommand = defineCommand({
 			description: "Category to list tools for (omit to list all categories)",
 			required: false,
 		},
+		remote: {
+			type: "boolean",
+			alias: "r",
+			description: "List configs from GitHub instead of local package",
+		},
 	},
 	async run({ args }) {
-		const registry = await loadRegistry();
+		const configsDir = await resolveConfigsDir(args.remote);
+		const registry = await loadRegistry(configsDir);
 
 		if (args.category) {
 			const catName = args.category as string;

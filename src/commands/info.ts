@@ -1,5 +1,6 @@
 import { defineCommand } from "citty";
 import { loadRegistry } from "../registry/index.ts";
+import { resolveConfigsDir } from "../registry/remote.ts";
 import { resolveTool } from "../registry/resolve.ts";
 import { bold, cyan, dim, green, yellow, magenta, kv, header, bullet } from "../utils/format.ts";
 
@@ -14,9 +15,15 @@ export const infoCommand = defineCommand({
 			description: "Tool name to get info for",
 			required: true,
 		},
+		remote: {
+			type: "boolean",
+			alias: "r",
+			description: "Fetch config info from GitHub instead of local package",
+		},
 	},
 	async run({ args }) {
-		const registry = await loadRegistry();
+		const configsDir = await resolveConfigsDir(args.remote);
+		const registry = await loadRegistry(configsDir);
 		const manifest = resolveTool(registry, args.tool as string);
 
 		if (!manifest) {
