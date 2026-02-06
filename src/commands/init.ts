@@ -118,8 +118,13 @@ const initTool = async (
 	// Process files
 	const results = await processManifestFiles(manifest, options);
 
-	// Merge devDependencies into package.json
-	if (Object.keys(manifest.devDependencies).length > 0 && !options.dryRun) {
+	// Merge dependencies, devDependencies, and scripts into package.json
+	const hasDeps =
+		Object.keys(manifest.dependencies).length > 0 ||
+		Object.keys(manifest.devDependencies).length > 0 ||
+		Object.keys(manifest.scripts).length > 0;
+
+	if (hasDeps && !options.dryRun) {
 		await mergePackageDeps(manifest, options);
 	}
 
@@ -139,7 +144,7 @@ const initTool = async (
 	if (skipped > 0) console.log(`  ${dim(`${skipped} skipped`)}`);
 };
 
-/** Merge manifest devDependencies and scripts into the project's package.json */
+/** Merge manifest dependencies, devDependencies, and scripts into the project's package.json */
 const mergePackageDeps = async (
 	manifest: Manifest,
 	options: InitOptions,
@@ -153,11 +158,14 @@ const mergePackageDeps = async (
 
 	let changed = false;
 
-	if (Object.keys(manifest.devDependencies).length > 0) {
-		pkg.devDependencies ??= {};
-		for (const [name, version] of Object.entries(manifest.devDependencies)) {
-			if (!pkg.devDependencies[name]) {
-				pkg.devDependencies[name] = version;
+	for (const field of ["dependencies", "devDependencies"] as const) {
+		const entries = Object.entries(manifest[field]);
+		if (entries.length === 0) continue;
+
+		pkg[field] ??= {};
+		for (const [name, version] of entries) {
+			if (!pkg[field][name]) {
+				pkg[field][name] = version;
 				changed = true;
 			}
 		}
