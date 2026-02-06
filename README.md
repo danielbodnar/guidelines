@@ -47,6 +47,11 @@ bunx guidelines init oxlint --dry-run
 
 # Overwrite existing files
 bunx guidelines init oxlint --force
+
+# Fetch latest configs from GitHub (no local install needed)
+bunx guidelines init oxlint --remote
+bunx guidelines list --remote
+bunx guidelines info oxlint --remote
 ```
 
 ## Available Configs
@@ -124,6 +129,18 @@ Each config file declares how it integrates into your project:
 | `template` | Copies with variable substitution (future) |
 | `reference` | Documentation-only, not copied |
 
+## Shareable Configs
+
+Tools that support `extends` can reference configs directly from the package:
+
+```jsonc
+// biome.jsonc
+{ "extends": ["@danielbodnar/guidelines/configs/linters/biome/biome.jsonc"] }
+
+// dprint.json
+{ "extends": "@danielbodnar/guidelines/configs/formatters/dprint/dprint.json" }
+```
+
 ## Quick Start
 
 Set up a typical Bun + TypeScript project in one command:
@@ -155,6 +172,7 @@ bun run dev           # Run CLI in development
 bun test              # Run tests
 bun run check         # TypeScript type-check
 bun run lint          # Lint with oxlint
+bun run build         # Compile standalone binary to .dist/guidelines
 ```
 
 ## License

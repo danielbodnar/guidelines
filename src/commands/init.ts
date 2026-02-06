@@ -2,7 +2,7 @@ import { defineCommand } from "citty";
 import { loadRegistry, type Registry } from "../registry/index.ts";
 import { resolveTool } from "../registry/resolve.ts";
 import { processManifestFiles, type InitOptions } from "../operations/copy.ts";
-import { fetchRemoteConfigs } from "../registry/remote.ts";
+import { resolveConfigsDir } from "../registry/remote.ts";
 import { bold, cyan, dim, green, yellow, red } from "../utils/format.ts";
 import type { Manifest } from "../registry/types.ts";
 import * as p from "@clack/prompts";
@@ -45,13 +45,7 @@ export const initCommand = defineCommand({
 		},
 	},
 	async run({ args, rawArgs }) {
-		let configsDir: string | undefined;
-
-		if (args.remote) {
-			console.log(`${dim("Fetching configs from GitHub...")}`);
-			configsDir = await fetchRemoteConfigs();
-		}
-
+		const configsDir = await resolveConfigsDir(args.remote);
 		const registry = await loadRegistry(configsDir);
 		const options: InitOptions = {
 			force: Boolean(args.force),
